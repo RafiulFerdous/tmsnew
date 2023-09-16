@@ -1,0 +1,25 @@
+.unattempted {
+  height: 25px;
+  width: 35px;
+  background-color: #3669ec;
+}
+.Delivered {
+  height: 25px;
+  width: 35px;
+  background-color: #149238;
+}
+.Lost {
+  height: 25px;
+  width: 35px;
+  background-color: #e6121f;
+}
+.Hold {
+  height: 25px;
+  width: 35px;
+  background-color: #d71896;
+}
+.Return {
+  height: 25px;
+  width: 35px;
+  background-color: #fc7900;
+}

@@ -1,0 +1,175 @@
+#ft {
+  position: fixed;
+}
+#menuhome {
+  /* margin-left: 30vh;
+  margin-top: 25vh; */
+}
+#srchmenu {
+  margin-top: 15vh;
+  position: absolute;
+  margin-left: 60vh;
+}
+
+#csvfile {
+  /* margin-left: 30vh;
+  margin-top: 15vh; */
+}
+#bgcrt {
+  margin-left: 30vh;
+  margin-top: 25vh;
+}
+#prds {
+  margin-left: 30vh;
+  margin-top: 25vh;
+}
+#vh {
+  margin-left: 30vh;
+  margin-top: 25vh;
+}
+#sr {
+  margin-left: 25vh;
+  margin-top: 25vh;
+  width: 190vh;
+}
+.sk-cube-grid {
+  width: 7vh;
+  height: 7vh;
+  margin: 40vh auto;
+}
+
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #333;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube {
+  width: 33%;
+  height: 33%;
+  background-color: #0c0c0c;
+  float: left;
+  -webkit-animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+  animation: sk-cubeGridScaleDelay 1.3s infinite ease-in-out;
+}
+.sk-cube-grid .sk-cube1 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.sk-cube-grid .sk-cube2 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.sk-cube-grid .sk-cube3 {
+  -webkit-animation-delay: 0.4s;
+  animation-delay: 0.4s;
+}
+.sk-cube-grid .sk-cube4 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.sk-cube-grid .sk-cube5 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+.sk-cube-grid .sk-cube6 {
+  -webkit-animation-delay: 0.3s;
+  animation-delay: 0.3s;
+}
+.sk-cube-grid .sk-cube7 {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+}
+.sk-cube-grid .sk-cube8 {
+  -webkit-animation-delay: 0.1s;
+  animation-delay: 0.1s;
+}
+.sk-cube-grid .sk-cube9 {
+  -webkit-animation-delay: 0.2s;
+  animation-delay: 0.2s;
+}
+
+@-webkit-keyframes sk-cubeGridScaleDelay {
+  0%,
+  70%,
+  100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+@keyframes sk-cubeGridScaleDelay {
+  0%,
+  70%,
+  100% {
+    -webkit-transform: scale3D(1, 1, 1);
+    transform: scale3D(1, 1, 1);
+  }
+  35% {
+    -webkit-transform: scale3D(0, 0, 1);
+    transform: scale3D(0, 0, 1);
+  }
+}
+
+.c {
+  background: url("../css/back4.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+.truck {
+  background: url("../css/back4.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+#mid {
+  position: relative;
+  width: 600px;
+  height: 200px;
+}
+#image {
+  height: 64x;
+  width: 64px;
+}
+#image2 {
+  position: absolute;
+  top: 45px;
+  left: 301px;
+  height: 64x;
+  width: 64px;
+}
+#gate {
+  background-image: url("http://5starsdesign.be/bg2.png");
+  position: absolute;
+  height: 10vh;
+  width: 100vh;
+  left: 480px;
+  top: 280px;
+  text-align: center;
+  font-family: "Arial Black", Gadget, sans-serif;
+  font-weight: bold;
+  font-size: 40px;
+  line-height: 50px;
+  background-color: yellow;
+  text-transform: uppercase;
+  background-size: 50px 50px;
+  color: white;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+}
+.bodydiv {
+  background-color: #e7f4f9;
+}
+
+.single-product-upload-bg {
+  background-color: #e9f3f7;
+}

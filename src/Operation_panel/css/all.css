@@ -1,0 +1,46 @@
+#mainmenu{
+    margin-left: 30vh;
+    margin-top: 15vh;
+   
+}
+#volume{
+    margin-left: 30vh;
+    margin-top: 10vh;
+}
+#srchmenu{
+    margin-left: 68vh;
+    margin-top: 13vh;
+    position: absolute;
+    height: 10vh;
+    justify-content: center;
+}
+
+#perfomance{
+    margin-left: 30vh;
+    margin-top: 25vh;
+}
+#picrq{
+    margin-left: 30vh;
+    margin-top: 25vh;
+   
+}
+#tracksrc{
+    margin-left: 10vh;
+}
+#sr{
+    margin-left: 30vh;
+    margin-top: 25vh;
+}
+#report{
+    margin-left: 32vh;
+    margin-top: 10vh;
+}
+
+.input-search {
+    width: -webkit-fill-available !important;
+    text-align: start !important;
+    margin-left: 15px !important;
+    box-shadow: 2px 3px 3px 1px #00000059 !important;
+    outline: none !important;
+    border: none !important;
+}

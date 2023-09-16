@@ -1,0 +1,155 @@
+.dashboard-border{
+    border: double 33px transparent;
+    border-radius: 15px;
+    /* background-image: linear-gradient(white, white), radial-gradient(circle at top left, #f00,#3020ff); */
+    background-image: linear-gradient(white, white), radial-gradient(rgba(160, 210, 216, 1),
+    rgba(176, 187, 188, 0.79),
+    rgba(4, 81, 89, 0.81));
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+}
+.inner-content{
+    border-radius: 9px;
+    background-color: #fff;
+    margin: -10px;
+}
+
+.total-card-delivered{
+    border-radius: 10px;
+    background: linear-gradient(rgba(43, 233, 97, 0.72),
+    rgba(2, 155, 46, 0.6855),
+    rgba(4, 98, 31, 0.75));
+}
+.total-card-returned{
+    border-radius: 10px;
+    background: linear-gradient(rgba(255, 122, 0, 0.65),
+    rgba(228, 154, 42, 0.65),
+    rgba(134, 58, 3, 0.65));
+}
+.total-card-Hold{
+    border-radius: 10px;
+    background: linear-gradient(rgba(181, 135, 245, 0.6),
+    rgba(140, 91, 209, 0.6),
+    rgba(53, 0, 126, 0.6));
+}
+.total-card{
+    cursor: pointer;
+}
+.total-card-Lost{
+    border-radius: 10px;
+    background: linear-gradient(rgba(154, 7, 16, 0.65),
+    rgba(228, 42, 42, 0.65));
+}
+.total-card-Unattempted{
+    border-radius: 10px;
+    background: linear-gradient(rgba(0, 102, 89, 0.5395),
+    rgba(11, 205, 181, 0.65));
+}
+.total-card-pickupRequested{
+    border-radius: 10px;
+    background: linear-gradient(rgba(243, 2, 175, 0.54),
+    rgba(10, 25, 23, 0.65));
+}
+.total-card-outForDelivery{
+    border-radius: 10px;
+    background: linear-gradient(rgba(0, 227, 11, 0.64),
+    rgba(10, 25, 23, 0.65));
+}
+.total-card-inTransit{
+    border-radius: 10px;
+    background: linear-gradient(rgba(6, 9, 6, 0.64),
+    rgba(10, 25, 23, 0.65));
+}
+
+@media only screen and (min-width: 768px)and (max-width: 992px){
+    .total-card{
+        margin: 5px ;
+    }
+}
+
+/* charts css */
+.pie-chart{
+    width: 140%;
+}
+.chart-left{
+    background-color: rgba(197, 213, 228, 1);
+    box-shadow: 10px 10px 24px 5px rgba(104, 107, 107, 0.65);
+    border-radius: 10px;
+}
+.chart-right{
+    background-color: rgba(197, 213, 228, 1);
+    box-shadow: 10px 10px 24px 5px rgba(104, 107, 107, 0.65);
+    border-radius: 10px;
+}
+.box-1{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5%;
+    /* background-color:#2BE961; */
+}
+.box-2{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5%;
+    /* background-color:#FF7A00; */
+}
+.box-3{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5%;
+    /* background-color:#8C5BD1; */
+}
+.box-4{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5%;
+    /* background-color:#FE0606; */
+}
+.box-5{
+    width: 20px;
+    height: 20px;
+    margin-bottom: 5%;
+    /* background-color:#21FCE1; */
+}
+@media only screen and (min-width: 768px)and (max-width: 992px){
+    .chart-left{
+        width: 45%;
+    }
+    .pie-center{
+        margin: auto;
+    }
+}
+@media only screen and (min-width: 480px)and (max-width: 767px){
+    .chart-left{
+        width: 80%;
+    }
+    .pie-chart{
+        width: 60%;
+        margin: auto;
+    }
+    .pie-center{
+        margin: auto;
+    }
+}
+@media only screen and (min-width: 350px)and (max-width: 479px){
+    .chart-left{
+        width: 80%;
+    }
+    .pie-chart{
+        width: 100%;
+    }
+    .pie-center{
+        margin: auto;
+    }
+}
+@media only screen and (max-width: 349px){
+    .chart-left{
+        width: 80%;
+    }
+    .pie-chart{
+        width: 100%;
+    }
+    .pie-center{
+        margin: auto;
+    }
+}

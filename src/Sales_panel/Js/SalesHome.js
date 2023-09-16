@@ -1,0 +1,386 @@
+import React from "react";
+import Footer from "../../Common/Footer";
+import { Navbar } from "../../Common/Navbar";
+import { useContext } from "react";
+import { LoginContext } from "../../Context/loginContext";
+import { useState } from "react";
+import { useEffect } from "react";
+import { employee_degignation_list } from "../../Super_Admin_Panel/js/Accountadmin";
+import {
+  CustomerCareLinksidebar,
+  Degital_Ocean_flag,
+  Salessidebar,
+  company_name,
+  superadminsidebar,
+} from "../../Common/Linksidebar";
+import { AiFillFileExcel } from "react-icons/ai";
+import { ScaleLoader } from "react-spinners";
+import Loader from "../../Loader";
+import HomeOperation from "../../Model/operation_content/HomeOperation";
+import { toast } from "react-toastify";
+
+const SalesHome = () => {
+  const [employId, setemployId] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [reportDate, setReportDate] = useState("");
+  const [showBtn, setShowBtn] = useState(false);
+  const [error, setError] = useState({});
+
+  const [reportUrl, setReportUrl] = useState("");
+
+  const [information, setinformation] = useState({});
+  const [payload, setpayload] = useState(false);
+
+  const [startdate, setstartdate] = useState(null);
+  const [enddate, setenddate] = useState(null);
+  const [waybill, setwaybill] = useState("");
+
+  var { loginInformation, setloginInformation } = useContext(LoginContext);
+
+  const [logingInformation_LocalStore, setlogingInformation_LocalStore] =
+    useState(loginInformation);
+  const [siteBarInformation_LocalStore, setsiteBarInformation_LocalStore] =
+    useState([]);
+
+  let setLogin_Sidebar_LocalStore = (
+    current_value_login_context,
+    sidebar_context
+  ) => {
+    localStorage.setItem(
+      "logingInformation_LocalStore",
+      JSON.stringify(current_value_login_context)
+    );
+  };
+
+  let getLogingInformation_LocalStore = () => {
+    let value = JSON.parse(
+      localStorage.getItem("logingInformation_LocalStore")
+    );
+    return value;
+  };
+
+  useEffect(() => {
+    let final_sideBar = null;
+    let context_flag_obj = null;
+    context_flag_obj = getLogingInformation_LocalStore();
+
+    if (context_flag_obj == undefined) {
+      if (
+        loginInformation.all_user_list.employeE_DEGIGNATION ==
+        employee_degignation_list.Marketing_executive
+      ) {
+        setsiteBarInformation_LocalStore(Salessidebar); //useState a set kore rakhlam.
+        final_sideBar = Salessidebar;
+      } else if (
+        loginInformation.all_user_list.employeE_DEGIGNATION ==
+        employee_degignation_list.DistrictIncharge
+      ) {
+        setsiteBarInformation_LocalStore(CustomerCareLinksidebar); //useState a set kore rakhlam
+        final_sideBar = CustomerCareLinksidebar;
+      }
+      //useState a set kore rakhlam.
+      setLogin_Sidebar_LocalStore(loginInformation, final_sideBar); //local store a set kore rakhlam.
+      setemployId(loginInformation.all_user_list.employeE_ID);
+      setlogingInformation_LocalStore(loginInformation); //useState a set kore rakhlam.
+      console.log(
+        "value set up if: ",
+        loginInformation.all_user_list.employeE_ID
+      );
+    } else {
+      if (
+        context_flag_obj.all_user_list.employeE_DEGIGNATION ==
+        employee_degignation_list.Marketing_executive
+      ) {
+        setsiteBarInformation_LocalStore(Salessidebar); //useState a set kore rakhlam.
+      } else if (
+        context_flag_obj.all_user_list.employeE_DEGIGNATION ==
+        employee_degignation_list.SuperAdmin
+      ) {
+        setsiteBarInformation_LocalStore(superadminsidebar); //useState a set kore rakhlam
+      }
+      setlogingInformation_LocalStore(context_flag_obj);
+      setemployId(context_flag_obj.all_user_list.employeE_ID);
+      setlogingInformation_LocalStore(context_flag_obj);
+      console.log(
+        "value set up else : ",
+        context_flag_obj.all_user_list.employeE_ID
+      );
+    }
+  }, []);
+
+  useEffect(() => {
+    setemployId(logingInformation_LocalStore.all_user_list.employeE_ID);
+  }, [logingInformation_LocalStore]);
+
+  const search = () => {
+    setIsLoading(true);
+    if (!logingInformation_LocalStore.token || employId === "") return;
+    if (
+      (waybill === "" || waybill === null) &&
+      (startdate === "" || startdate === null) &&
+      (enddate === "" || enddate === null)
+    ) {
+      toast.info("Enter Date or Waybills");
+      setIsLoading(false);
+      return;
+    }
+    toast.info("Searching");
+    var data = JSON.stringify({
+      employee_id: employId,
+      waybill_string: waybill === "" ? null : waybill,
+      start_date: startdate === "" ? null : startdate,
+      end_date: enddate === "" ? null : enddate,
+    });
+
+    var axios = require("axios");
+
+    console.log("Locked api: ", data);
+
+    var config = {
+      method: "post",
+      url: Degital_Ocean_flag
+        ? "https://e-deshdelivery.com/universalapi/allapi/operationPanel_Homeapi" +
+          "?company_name=" +
+          company_name
+        : "/universalapi/allapi/operationPanel_Homeapi" +
+          "?company_name=" +
+          company_name,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${logingInformation_LocalStore.token}`,
+      },
+      data: data,
+    };
+    console.log("new api", config);
+
+    axios(config)
+      .then(function (response) {
+        let json_object_str = JSON.stringify(response.data);
+        let json_object = JSON.parse(json_object_str);
+        console.log(json_object);
+        return json_object;
+      })
+      .then((res) => {
+        console.log("ops api call", res);
+        toast.success("Successful Search!");
+        setinformation(res);
+        setIsLoading(false);
+        if (res.message.length === 0) {
+          toast.success("No Data!");
+          setpayload(false);
+        } else {
+          setpayload(true);
+        }
+        // setpayload(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+        setIsLoading(false);
+      });
+  };
+
+  useEffect(() => {
+    var axios = require("axios");
+    setShowBtn(false);
+    var config = {
+      method: "get",
+      url: Degital_Ocean_flag
+        ? "https://e-deshdelivery.com/api/Report/OperationReport" +
+          "?company_name=" +
+          company_name +
+          "&endDate=" +
+          reportDate
+        : "/api/Report/OperationReport" +
+          "?company_name=" +
+          company_name +
+          "&endDate=" +
+          reportDate,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${logingInformation_LocalStore.token}`,
+      },
+    };
+    console.log("new api", config);
+
+    axios(config)
+      .then(function (response) {
+        let json_object_str = JSON.stringify(response.data);
+        let json_object = JSON.parse(json_object_str);
+        console.log(json_object);
+        return json_object;
+      })
+      .then((res) => {
+        console.log("report url", res);
+        setReportUrl(res.downloadurl);
+        setShowBtn(true);
+      })
+      .catch(function (error) {
+        console.log(error);
+        setError(error?.response);
+        setShowBtn(false);
+      });
+  }, [reportDate]);
+
+  const handleReportDate = (e) => {
+    setReportDate(e.target.value);
+  };
+
+  return (
+    <div className="bodydiv">
+      <div className="row">
+        <div className="col-12 bg-dark">
+          <Navbar sidebar_manu={siteBarInformation_LocalStore} />
+        </div>
+      </div>
+      <div className="container mt-5 pt-5">
+        <div className="row justify-content-between">
+          <div className="col-lg-5 col-md-6 col-12 p-3 shadow-lg text-center">
+            <label htmlFor="report-download" className="mt-3">
+              Pick date for report previous 5 month.
+            </label>
+            <br />
+            <br />
+            <input
+              style={{
+                backgroundColor: "#C5D5E4",
+                outline: "none",
+                border: "none",
+                padding: "7px",
+                borderRadius: "8px",
+                // marginLeft: "6px",
+                width: "65%",
+              }}
+              type="date"
+              name=""
+              id="report-download"
+              onChange={handleReportDate}
+            />
+            <br />
+            <br />
+
+            {reportDate.length == 0 ? (
+              <p className="border p-2 d-inline ">Please Select Date:</p>
+            ) : showBtn ? (
+              <a className="btn btn-success my-2 text-white " href={reportUrl}>
+                <AiFillFileExcel /> DownLoad Report
+              </a>
+            ) : error.statusText ? (
+              <p className="text-danger">{error?.statusText}</p>
+            ) : (
+              //loader
+              <ScaleLoader color="#36d7b7" height={15} width={3} />
+            )}
+          </div>
+          <div className="col-lg-5 col-md-6 col-12 p-3 shadow-lg text-center">
+            <div className="p-3">
+              <div className="row  ">
+                <div className="col-lg-6 col-md-12 col-12">
+                  <div className="text-start my-1">
+                    {/* <label htmlFor="startdate">Start Date</label> */}
+                    <p className="mb-0">Start Date</p>
+                    <input
+                      style={{
+                        backgroundColor: "#C5D5E4",
+                        outline: "none",
+                        border: "none",
+                        padding: "7px",
+                        borderRadius: "8px",
+                        width: "100%",
+                      }}
+                      type="date"
+                      className="input-small "
+                      id="startdate"
+                      value={startdate}
+                      onChange={(e) => {
+                        setstartdate(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
+                <div className="col-lg-6 col-md-12 col-12">
+                  <div className="text-end my-1">
+                    {/* <label htmlFor="enddate">End Date</label> */}
+                    <p className="mb-0">End Date</p>
+                    <input
+                      style={{
+                        backgroundColor: "#C5D5E4",
+                        outline: "none",
+                        border: "none",
+                        padding: "7px",
+                        borderRadius: "8px",
+                        marginLeft: "6px",
+                        width: "100%",
+                      }}
+                      type="date"
+                      className="input-small"
+                      id="enddate"
+                      value={enddate}
+                      onChange={(e) => {
+                        setenddate(e.target.value);
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+              <div className="row mt-2">
+                <input
+                  style={{
+                    backgroundColor: "#C5D5E4",
+                    outline: "none",
+                    border: "none",
+                    padding: "7px",
+                    borderRadius: "8px",
+                    width: "96%",
+                    marginLeft: "10px",
+                  }}
+                  type="text"
+                  placeholder="Waybill"
+                  value={waybill}
+                  onChange={(e) => {
+                    setwaybill(e.target.value);
+                  }}
+                />
+              </div>
+              <div className=" d-flex justify-content-center mt-3">
+                <button
+                  type="button"
+                  className="btn btn-success btn-sm px-4 rounded-pill"
+                  onClick={search}
+                >
+                  Search
+                </button>
+              </div>
+              {/* <div className="border">
+                  <div className="row mt-2">
+
+                    <div className="col-6">
+                    </div>
+                  </div>
+                </div> */}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="container">
+        <div className="col-12" id="">
+          {isLoading ? (
+            <Loader />
+          ) : payload ? (
+            <HomeOperation response={information} />
+          ) : (
+            <></>
+          )}
+        </div>
+      </div>
+
+      <div className="">
+        <div className="col-12">
+          <Footer />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SalesHome;

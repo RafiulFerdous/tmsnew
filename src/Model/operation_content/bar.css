@@ -1,0 +1,41 @@
+.barchart{
+    margin-left: 40vh;
+}
+.piechart{
+    width: 50vh;
+    
+}
+.piechart1{
+    width: 50vh;
+    margin-left: 58vh;
+}
+.piechart2{
+    width: 80vh;
+    margin-left: 35vh;
+}
+.barchartvolume{
+    margin-left: 68vh;
+    margin-top: -47vh;
+}
+.devicer {
+    width: 54.5em;
+    display: block;
+    height: 1vh;
+    background-color: #c2f3f3;
+    margin-left: 10vh;
+  }
+
+
+  #dashboard-card{
+    margin-top: 1vh!important;
+}
+.bg-orange{
+    background-color: orange;
+}
+.bg-purple{
+    background-color: orchid;
+}
+#piechart{
+    height: 100%!important;
+    width: 30vw !important;
+}

@@ -1,0 +1,11 @@
+#tableacc td{
+    margin: 5px 20px;
+    border: 2px white solid;
+    background: #E7F4F9;
+    font-size: 11px;
+}
+
+#tableacc th{
+    font-size: 14px;
+
+}

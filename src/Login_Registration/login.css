@@ -1,0 +1,51 @@
+.gradient-form{
+    /*overflow: hidden;*/
+    height: 100% !important;
+   }
+   .logo{
+       
+   }
+   .maxx_hheight{
+       min-height: 100vh;
+   }
+   
+   .card_border_redius{
+       border-radius: 5%;
+   }
+   
+   .footer_margin{
+       margin-left: .5rem;
+       color: red;
+   }
+   
+   .box_shadow {
+       box-shadow: 2px 3px 3px 3px #cac8c8;
+   }
+   #bc_a{
+       background-color: rgb(183, 187, 194);
+   }
+   .eye{
+       margin-left: 65vh;
+      
+      
+   }
+   .text-green {
+       color: green;
+       font-size: unset!important;
+     }
+   .login-input{
+       /* color: white!important; */
+   }
+   .login-form{
+       height: 100vh!important;
+   }
+   #login-card{
+       margin-top: 0vh!important;
+   }
+   #span{
+    margin-left: 0px;
+}
+
+#way{
+    font-size: 14px!important;
+}

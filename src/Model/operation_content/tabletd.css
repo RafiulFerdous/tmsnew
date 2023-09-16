@@ -1,0 +1,17 @@
+#tableq td {
+  margin: 5px 20px;
+  border: 2px white solid;
+  background: #e7f4f9;
+  font-size: 11px;
+}
+
+#newops th {
+  /* font-size: 14px; */
+}
+
+#newops {
+  /* margin-left: -109px; */
+}
+#opscon {
+  margin-left: -49px;
+}
