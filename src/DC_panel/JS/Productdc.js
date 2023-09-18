@@ -376,24 +376,28 @@ const Productdc = () => {
     }, [information]);
     // to add auto comma
     // to go back to old version replace
-    const addcomma = (e) => {
+    // const addcomma = (e) => {
+    //     let tempstr = e.target.value;
+    //     let newstr = "";
+    //     let count = 0;
+    //     for (let i = 0; i < tempstr.length; i++) {
+    //         if (tempstr[i] == " " || tempstr[i] == ",") {
+    //             continue;
+    //         }
+    //         if (count === 12) {
+    //             count = 0;
+    //             newstr += tempstr[i] + ",";
+    //         } else {
+    //             count++;
+    //             newstr += tempstr[i];
+    //         }
+    //     }
+    //     console.log("new str", newstr);
+    //     setstrProductWaybillList(newstr);
+    // };
+    const getwaybillfunc = (e) => {
         let tempstr = e.target.value;
-        let newstr = "";
-        let count = 0;
-        for (let i = 0; i < tempstr.length; i++) {
-            if (tempstr[i] == " " || tempstr[i] == ",") {
-                continue;
-            }
-            if (count === 12) {
-                count = 0;
-                newstr += tempstr[i] + ",";
-            } else {
-                count++;
-                newstr += tempstr[i];
-            }
-        }
-        console.log("new str", newstr);
-        setstrProductWaybillList(newstr);
+        setstrProductWaybillList(tempstr);
     };
     const searchIcon = <FontAwesomeIcon icon={faSearch}></FontAwesomeIcon>;
     return (
@@ -428,7 +432,7 @@ const Productdc = () => {
                                                 required
                                                 value={strProductWaybillList}
                                                 onChange={(e) => {
-                                                    addcomma(e);
+                                                    getwaybillfunc(e);
                                                 }}
                                             />
                                         </div>
